@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shikhar Shahi - Data Science Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            color: #00ff41;
+            transition: background 0.5s ease;
+        }
+
+        /* Cyberpunk Matrix Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 35%, #0f0f23 100%);
+        }
+
+        /* Matrix Rain Effect */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -200px;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            animation: matrix-fall linear infinite;
+            text-shadow: 0 0 5px #00ff41;
+            opacity: 0.8;
+            line-height: 1.2;
+            white-space: nowrap;
+            max-width: 300px;
+            overflow: hidden;
+        }
+
+        @keyframes matrix-fall {
+            to {
+                transform: translateY(calc(100vh + 200px));
+            }
+        }
+
+        /* Glitch Lines */
+        .glitch-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .glitch-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff0080, #00ffff, transparent);
+            animation: glitch-move 3s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes glitch-move {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Cyberpunk Grid */
+        .cyber-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Circuit Lines */
+        .circuit-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .circuit {
+            position: absolute;
+            border: 1px solid #00ff41;
+            border-radius: 3px;
+            opacity: 0.2;
+            animation: circuit-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes circuit-pulse {
+            0%, 100% { 
+                box-shadow: 0 0 5px #00ff41, inset 0 0 5px #00ff41;
+                opacity: 0.2;
+            }
+            50% { 
+                box-shadow: 0 0 20px #00ff41, inset 0 0 10px #00ff41;
+                opacity: 0.6;
+            }
+        }
+
+        /* Code Snippets Flying */
+        .code-snippets {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .code-snippet {
+            position: absolute;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            opacity: 0.3;
+            animation: code-float 15s linear infinite;
+            text-shadow: 0 0 3px #00ff41;
+        }
+
+        @keyframes code-float {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header Section */
+        .header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #00ff41;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(0, 255, 65, 0.1);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            border: 3px solid #00ff41;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 20px #00ff41, inset 0 0 20px rgba(0, 255, 65, 0.1);
+            animation: profile-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes profile-glow {
+            0% { 
+                box-shadow: 0 0 20px #00ff41, inset 0 0 20px rgba(0, 255, 65, 0.1);
+                border-color: #00ff41;
+            }
+            100% { 
+                box-shadow: 0 0 40px #ff0080, 0 0 60px #00ffff, inset 0 0 30px rgba(255, 0, 128, 0.1);
+                border-color: #ff0080;
+            }
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px #00ff41, 0 0 70px #ff0080, 0 0 90px #00ffff;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out, text-glitch 3s ease-in-out infinite;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #ff0080, 0 0 30px #00ffff;
+        }
+
+        @keyframes text-glitch {
+            0%, 100% { 
+                text-shadow: 0 0 10px #00ff41;
+                color: #00ff41;
+            }
+            25% { 
+                text-shadow: -2px 0 #ff0080, 2px 0 #00ffff;
+                color: #ff0080;
+            }
+            50% { 
+                text-shadow: 2px 0 #ff0080, -2px 0 #00ffff;
+                color: #00ffff;
+            }
+            75% { 
+                text-shadow: 0 0 10px #ff0080, 0 0 20px #00ffff;
+                color: #00ff41;
+            }
+        }
+
+        .header p {
+            font-size: 1.5em;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.5s both;
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 12px 24px;
+            margin: 0 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-shadow: 0 0 5px #00ff41;
+            font-family: 'Courier New', monospace;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 255, 65, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 65, 0.3), 0 0 30px #00ff41;
+            color: #ffffff;
+            border-color: #ff0080;
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 80px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 60px;
+            border: 1px solid #00ff41;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2), inset 0 0 20px rgba(0, 255, 65, 0.05);
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 255, 65, 0.3), 0 0 50px #00ff41, inset 0 0 30px rgba(0, 255, 65, 0.1);
+            border-color: #ff0080;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #00ff41;
+            text-align: center;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #ff0080;
+            animation: title-flicker 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes title-flicker {
+            0% { 
+                text-shadow: 0 0 10px #00ff41;
+                color: #00ff41;
+            }
+            100% { 
+                text-shadow: 0 0 20px #ff0080, 0 0 30px #00ffff;
+                color: #00ffff;
+            }
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #00ff41;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-5px) scale(1.05);
+            border-color: #ff0080;
+            box-shadow: 0 0 30px rgba(255, 0, 128, 0.4), 0 0 50px rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-card h3 {
+            color: #00ff41;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-shadow: 0 0 5px #00ff41;
+            font-family: 'Courier New', monospace;
+        }
+
+        .skill-card:hover h3 {
+            color: #ff0080;
+            text-shadow: 0 0 10px #ff0080;
+        }
+
+        .skill-card p {
+            color: #00ffff;
+            line-height: 1.6;
+            text-shadow: 0 0 3px #00ffff;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            background: linear-gradient(45deg, #ff0080, #00ffff);
+            color: #000000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #00ff41;
+            text-shadow: none;
+            font-family: 'Courier New', monospace;
+        }
+
+        .social-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.5), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-btn:hover:before {
+            left: 100%;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(255, 0, 128, 0.4), 0 0 50px #00ff41;
+            background: linear-gradient(45deg, #00ff41, #ff0080);
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff;
+        }
+
+        /* Certifications */
+        .cert-card {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #00ff41;
+            border-right: 5px solid #ff0080;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .cert-card:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(10px);
+            box-shadow: 0 0 40px rgba(0, 255, 65, 0.4), 0 0 60px rgba(255, 0, 128, 0.3);
+            border-left-color: #ff0080;
+            border-right-color: #00ffff;
+        }
+
+        .cert-card h3 {
+            color: #00ff41;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ff41;
+            font-family: 'Courier New', monospace;
+        }
+
+        .cert-card:hover h3 {
+            color: #ff0080;
+            text-shadow: 0 0 10px #ff0080;
+        }
+
+        .cert-card p {
+            color: #00ffff;
+            text-shadow: 0 0 3px #00ffff;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .container {
+                padding: 40px 30px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation" id="bgAnimation">
+        <!-- Matrix Rain -->
+        <div class="matrix-rain" id="matrixRain"></div>
+        
+        <!-- Cyberpunk Grid -->
+        <div class="cyber-grid"></div>
+        
+        <!-- Glitch Lines -->
+        <div class="glitch-lines" id="glitchLines"></div>
+        
+        <!-- Circuit Lines -->
+        <div class="circuit-lines" id="circuitLines"></div>
+        
+        <!-- Code Snippets -->
+        <div class="code-snippets" id="codeSnippets"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <button class="nav-btn" onclick="scrollToSection('header')">Home</button>
+        <button class="nav-btn" onclick="scrollToSection('about')">About</button>
+        <button class="nav-btn" onclick="scrollToSection('skills')">Skills</button>
+        <button class="nav-btn" onclick="scrollToSection('contact')">Contact</button>
+    </nav>
+
+    <!-- Header -->
+    <section class="header" id="header">
+        <div>
+            <div class="profile-img">👨‍💻</div>
+            <h1>Shikhar Shahi</h1>
+            <p>Aspiring Data Scientist & Analytics Enthusiast</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p style="color: #00ffff; font-size: 1.2em; line-height: 1.8; text-align: center; text-shadow: 0 0 5px #00ffff;">
+                Passionate data science fresher with a strong foundation in statistical analysis, machine learning, and data visualization. 
+                I'm eager to apply my analytical skills and technical knowledge to solve real-world business problems through data-driven insights. 
+                Currently seeking opportunities to contribute to innovative data science projects and grow in a dynamic environment.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🐍 Programming</h3>
+                    <p>Python, R, SQL, JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <h3>📊 Data Analysis</h3>
+                    <p>Pandas, NumPy, Matplotlib, Seaborn, Plotly</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🤖 Machine Learning</h3>
+                    <p>Scikit-learn, TensorFlow, Keras, Statistical Modeling</p>
+                </div>
+                <div class="skill-card">
+                    <h3>💾 Databases</h3>
+                    <p>MySQL, PostgreSQL, MongoDB</p>
+                </div>
+                <div class="skill-card">
+                    <h3>📈 Visualization</h3>
+                    <p>Tableau, Power BI, D3.js, Excel</p>
+                </div>
+                <div class="skill-card">
+                    <h3>☁️ Tools & Platforms</h3>
+                    <p>Jupyter, Git, AWS, Google Cloud, Docker</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="cert-card">
+                <h3>🏆 IBM Data Science Professional Certificate</h3>
+                <p>Comprehensive program covering data science methodology, Python programming, databases, SQL, data visualization, statistical analysis, and machine learning algorithms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p style="color: #00ffff; text-align: center; margin-bottom: 40px; font-size: 1.1em; text-shadow: 0 0 5px #00ffff;">
+                Ready to collaborate on exciting data science projects? Let's connect and explore opportunities together!
+            </p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/shikhar-shahi-7934a327a/" target="_blank" class="social-btn">
+                    🔗 LinkedIn
+                </a>
+                <a href="https://www.youtube.com/ggshikhar" target="_blank" class="social-btn">
+                    📺 YouTube
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const bgAnimation = document.getElementById('bgAnimation');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size and position
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                bgAnimation.appendChild(particle);
+            }
+        }
+
+        // Change background color on scroll
+        function updateBackgroundOnScroll() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / docHeight;
+
+            const colors = [
+                ['#667eea', '#764ba2'], // Purple gradient
+                ['#f093fb', '#f5576c'], // Pink gradient
+                ['#4facfe', '#00f2fe'], // Blue gradient
+                ['#43e97b', '#38f9d7'], // Green gradient
+                ['#fa709a', '#fee140']  // Orange gradient
+            ];
+
+            const colorIndex = Math.floor(scrollPercent * (colors.length - 1));
+            const nextColorIndex = Math.min(colorIndex + 1, colors.length - 1);
+            const localPercent = (scrollPercent * (colors.length - 1)) - colorIndex;
+
+            const currentColor = colors[colorIndex];
+            const nextColor = colors[nextColorIndex];
+
+            // Interpolate between colors
+            const color1 = interpolateColor(currentColor[0], nextColor[0], localPercent);
+            const color2 = interpolateColor(currentColor[1], nextColor[1], localPercent);
+
+            document.body.style.background = `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+        }
+
+        // Color interpolation helper
+        function interpolateColor(color1, color2, factor) {
+            const c1 = hexToRgb(color1);
+            const c2 = hexToRgb(color2);
+            
+            const r = Math.round(c1.r + (c2.r - c1.r) * factor);
+            const g = Math.round(c1.g + (c2.g - c1.g) * factor);
+            const b = Math.round(c1.b + (c2.b - c1.b) * factor);
+            
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add scroll event listener with throttling
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        updateBackgroundOnScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+
+        // Add entrance animations when sections come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all containers
+        document.addEventListener('DOMContentLoaded', function() {
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(container => {
+                container.style.opacity = '0';
+                container.style.transform = 'translateY(50px)';
+                container.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(container);
+            });
+        });
+    </script>
+</body>
+</html>
