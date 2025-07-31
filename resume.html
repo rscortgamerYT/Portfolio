@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anirudh Kumar | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: white;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #00f0ff;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #ddd;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00f0ff;
+    }
+
+    .hero {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(15, 15, 15, 0.9)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80')
+        no-repeat center center/cover;
+      padding: 120px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      background-color: #00f0ff;
+      color: black;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00d1e0;
+      transform: scale(1.05);
+    }
+
+    .quote {
+      padding: 60px 20px;
+      background-color: #121212;
+      text-align: center;
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .quote p {
+      font-size: 22px;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 8px;
+      color: #00f0ff;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #00f0ff;
+      border-left: 5px solid #00f0ff;
+      padding-left: 15px;
+    }
+
+    #skills span {
+      display: inline-block;
+      background-color: #1a1a1a;
+      padding: 10px 18px;
+      margin: 8px;
+      border-radius: 20px;
+      border: 1px solid #00f0ff;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #skills span:hover {
+      background-color: #00f0ff;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 30px;
+      padding-left: 20px;
+      border-left: 3px dashed #00f0ff;
+    }
+
+    .timeline li {
+      list-style: none;
+      margin: 30px 0;
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: "🔹";
+      position: absolute;
+      left: -30px;
+      color: #00f0ff;
+      font-size: 18px;
+    }
+
+    .timeline strong {
+      color: #00f0ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #1f1f1f;
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+    a {
+      color: #00f0ff;
+    }
+
+    a:hover {
+      color: #00c1ff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Anirudh Kumar</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Lead Software Engineer</h2>
+    <p>Crafting smart solutions with AI, ML & full-stack development.</p>
+    <a href="#contact"><button class="btn">Contact Me</button></a>
+  </section>
+
+  <section class="quote">
+    <p>"The only way to do great work is to love what you do."</p>
+    <span>— Steve Jobs</span>
+  </section>
+
+  <section id="about" class="section">
+    <h3>About Me</h3>
+    <p>I’m Anirudh Kumar, a seasoned software engineer with over 11 years of experience in Python, Data Science, AI, ML, and full-stack development. I build scalable AI-driven systems and web applications that deliver real-world impact across industries.</p>
+  </section>
+
+  <section id="skills" class="section">
+    <h3>Skills</h3>
+    <span>Python</span>
+    <span>Machine Learning</span>
+    <span>Deep Learning</span>
+    <span>Django</span>
+    <span>Flask</span>
+    <span>Data Engineering</span>
+    <span>Airflow</span>
+    <span>AWS</span>
+    <span>TensorFlow</span>
+    <span>NLP</span>
+    <span>Docker</span>
+    <span>Keras</span>
+    <span>OpenAI</span>
+    <span>Streamlit</span>
+    <span>PySpark</span>
+  </section>
+
+  <section id="experience" class="section">
+    <h3>My Journey</h3>
+    <ul class="timeline">
+      <li><strong>Lead Software Engineer</strong> – EPAM Systems (2022 – Present)</li>
+      <li><strong>Senior Technology Engineer</strong> – Iris Software (2020 – 2022)</li>
+      <li><strong>Software Engineer</strong> – Cerence Services India LLP (2019 – 2020)</li>
+      <li><strong>Software Engineer</strong> – Virtual Employee Pvt. Ltd. (2019)</li>
+      <li><strong>Python Expert</strong> – CETPA Infotech Pvt. Ltd. (2014 – 2019)</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="section">
+    <h3>Contact</h3>
+    <p><strong>Email:</strong> anirudh.kumar7908@gmail.com</p>
+    <p><strong>Phone:</strong> +91 7282823774</p>
+    <p><strong>Location:</strong> Noida, India</p>
+    <p><a href="https://www.linkedin.com/in/eniranirudhkumar/" target="_blank">LinkedIn Profile</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Anirudh Kumar | All rights reserved.</p>
+  </footer>
+</body>
+</html>
